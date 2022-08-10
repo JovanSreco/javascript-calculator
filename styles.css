@@ -41,7 +41,7 @@ body {
   width: 400px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 100px repeat(5, 55px);
+  grid-template-rows: minmax(100px, 1fr) repeat(5, 55px);
   gap: 15px;
   background-color: #f7f7f7;
   border: 1px solid black;
