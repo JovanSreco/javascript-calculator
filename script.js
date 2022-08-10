@@ -1,56 +1,15 @@
-class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
-        this.previousOperandTextElement = previousOperandTextElement
-        this.currentOperandTextElement = currentOperandTextElement
-        this.clear()
-    }
-
-    clear() {
-        this.previousOperand = ""
-        this.currentOperand = ""
-        this.operation = undefined
-    }
-
-    delete() {
-        this.currentOperand = this.currentOperand.slice(0, -1)
-        this.updateDisplay()
-    }
-
-    appendNumber(number) {
-        if(this.currentOperand.includes(".") && number === ".") return;
-        this.currentOperand += number.toString()
-        this.updateDisplay()
-    }
-
-    selectOperation(operation) {
-        if(!this.currentOperand) return
-        if(this.previousOperand) {
-            this.calculate()
-        }
-        this.operation = operation
-        this.previousOperand = `${this.currentOperand} ${operation}`
-        this.currentOperand = ""
-    }
-
-    calculate() {
-
-    }
-
-    updateDisplay() {
-        this.previousOperandTextElement.innerText = this.previousOperand
-        this.currentOperandTextElement.innerText = this.currentOperand
-    }
-}
+'use strict'
+import Calculator from "./calculator.js"
 
 const numberBtns = document.querySelectorAll("[data-number]")
 const operationBtns = document.querySelectorAll("[data-operation]")
 const equalsBtn = document.querySelector("[data-equals]")
-const allClearBtn = document.querySelector("[data-all-clear]")
+const clearBtn = document.querySelector("[data-all-clear]")
 const delBtn = document.querySelector("[data-delete]")
-const previousOperandTextElement = document.querySelector("[data-previous-operand]")
-const currentOperandTextElement = document.querySelector("[data-current-operand]")
+const previousOperandElement = document.querySelector("[data-previous-operand]")
+const currentOperandElement = document.querySelector("[data-current-operand]")
 
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+const calculator = new Calculator(previousOperandElement, currentOperandElement)
 
 // Number addition to display
 numberBtns.forEach(btn => {
@@ -67,10 +26,17 @@ operationBtns.forEach(operation => {
     })
 })
 
+equalsBtn.addEventListener("click", () => {
+    calculator.calculate()
+    calculator.updateDisplay()
+})
+
+clearBtn.addEventListener(("click"), () => {
+    calculator.clearAll()
+    calculator.updateDisplay()
+})
 
 delBtn.addEventListener("click", () => {
     calculator.delete()
     calculator.updateDisplay()
 })
-// Number addition to display
-// Dot problem
