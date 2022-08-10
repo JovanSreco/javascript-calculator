@@ -11,7 +11,6 @@ const currentOperandElement = document.querySelector("[data-current-operand]");
 
 const calculator = new Calculator(previousOperandElement, currentOperandElement);
 
-// Number addition to display
 numberBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     calculator.appendNumber(btn.dataset.number);
