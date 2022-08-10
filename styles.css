@@ -1,3 +1,15 @@
+:root {
+  --color-output: rgba(130, 130, 130, 0.9);
+  --color-operators: rgb(255, 199, 0);
+  --color-operators-hover: rgba(255, 199, 0, 0.75);
+  --color-equal: rgb(1, 131, 251);
+  --color-equal-hover: rgba(1, 131, 251, 0.75);
+  --color-buttons: rgb(221, 221, 221);
+  --color-buttons-hover: rgb(249, 249, 249);
+
+  --transition: all 0.3s ease-in-out;
+}
+
 *,
 *::before,
 *::after {
@@ -8,4 +20,91 @@
 
 html {
   box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(68, 90, 223);
+  background: linear-gradient(
+    135deg,
+    rgba(68, 90, 223, 1) 0%,
+    rgba(76, 226, 147, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.calculator {
+  padding: 20px;
+  width: 400px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 100px repeat(5, 55px);
+  gap: 15px;
+  background-color: #f7f7f7;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.35);
+}
+
+.output {
+  grid-column: 1 / -1;
+  border: inherit;
+  border-radius: inherit;
+  background-color: var(--color-output);
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.output .previous-operation {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 20px;
+}
+
+.output .current-operation {
+  color: white;
+  font-size: 30px;
+}
+
+button {
+  font-size: 20px;
+  background-color: var(--color-buttons);
+  border: inherit;
+  border-radius: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover {
+  background-color: var(--color-buttons-hover);
+}
+
+.ac {
+  grid-column: 1 / span 2;
+}
+
+.operator {
+  color: #fff;
+  background-color: var(--color-operators);
+  font-size: 30px;
+}
+
+.operator:hover {
+  background-color: var(--color-operators-hover);
+}
+
+.equals {
+  grid-column: 3 / span 2;
+  color: #fff;
+  background-color: var(--color-equal);
+}
+
+.equals:hover {
+  background-color: var(--color-equal-hover);
 }
