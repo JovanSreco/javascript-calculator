@@ -62,14 +62,14 @@ export default class Calculator {
         this.previousOperand = ''
     }
 
-    updateDisplay() {
-        this.previousOperandElement.innerText = this.previousOperand
-        this.currentOperandElement.innerText = this.currentOperand
-    }
-
     changeOperation(operation) {
         this.operation = operation
-        previousOperand
+        this.previousOperandElement.innerText = `${this.previousOperand} ${this.operation}`
     }
 
+    updateDisplay() {
+        this.previousOperandElement.innerText = this.previousOperand
+        if(this.operation) this.previousOperandElement.innerText += " " + this.operation.toString()
+        this.currentOperandElement.innerText = this.currentOperand
+    }
 }
